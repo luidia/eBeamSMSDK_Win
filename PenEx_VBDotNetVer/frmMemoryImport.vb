@@ -9,8 +9,8 @@ Public Class frmMemoryImport
         If EquilModelCode = 3 Then 'Sp2
             StartDISetup(0)
         Else    'sm
-            StartDISetup(1)
-
+            StartDISetup(0)
+            SetDIList()
         End If
     End Sub
 
@@ -20,7 +20,7 @@ Public Class frmMemoryImport
         Try
             Dim _size As Integer = 0
             GetDIList(Nothing, _size)
-
+  
             clist = Array.CreateInstance(GetType(Byte), _size)
 
             Dim pData As GCHandle = GCHandle.Alloc(clist, GCHandleType.Pinned)
@@ -32,6 +32,7 @@ Public Class frmMemoryImport
 
 
         Console.WriteLine("Set di list done")
+ 
         MakeImportNotebookList(clist)
 
 
@@ -97,6 +98,7 @@ Public Class frmMemoryImport
 
     Private Sub btnGetMemoryData_Click(sender As Object, e As EventArgs) Handles btnGetMemoryData.Click
         Dim fileName As String = ListBox1.SelectedItem
+        If fileName Is Nothing Then Return
         Dim ll As List(Of Integer) = DI_dataList(fileName)
         SetDI(DICOMMAND.OPENFILE, ll.Item(0), ll.Item(1))
     End Sub

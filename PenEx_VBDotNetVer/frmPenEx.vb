@@ -591,6 +591,8 @@ Public Class frmPenEx
                 MsgBox("press button of sensor(New Page)")
             Case WM_DI_DUPLICATE
                 MsgBox("long press button of sensor(Duplicate Page)")
+                ' Create New page and copy the data of current page to new page
+
             Case WM_RETURNMESSAGE
                 If bPenConnect AndAlso bPenRunning Then
                     PacketCnt += 1
@@ -678,7 +680,6 @@ Public Class frmPenEx
                                 Case PenStatus.PEN_UP
                                     picMainDoMouseUp(pt, MouseButtons.Left, press, False)
                                 Case PenStatus.PEN_HOVER
-
                             End Select
 
                         Catch ex As Exception
@@ -687,6 +688,9 @@ Public Class frmPenEx
                     End If
                 End If
                 Console.WriteLine("WM_RETURNMESSAGE")
+            Case WM_DOWNLOAD_COMPLEATE
+                Console.WriteLine("WM_DOWNLOAD_COMPLEATE")
+                MsgBox("Import finished")
             Case WM_GESTUREMESSAGE
                 MouseFlagDisable()
 
@@ -714,7 +718,7 @@ Public Class frmPenEx
                 End If
 
             Case WM_PENCONDITION
-                Console.WriteLine("WM_PENCONDITION")
+                'Console.WriteLine("WM_PENCONDITION")
                 Dim pCondition As New PENConditionData
                 pCondition = Marshal.PtrToStructure(m.WParam, New PENConditionData().GetType) 'PEN DATA STRUCTURE
                 lbModelCode.Text = pCondition.modelCode
@@ -823,9 +827,9 @@ Public Class frmPenEx
 
             Case WM_DI_ACC
 
-                Console.WriteLine("Memory Import WM_DI_ACC =======================")
-                ' for smart pen 2
-                ' Sensor is lifted for changing paper. you should create new page.
+                Console.WriteLine("Memory Import  Duplicated =======================")
+                ' Should create New page and copied data will come
+
             Case WM_DI_CHANGE_STATION
                 Console.WriteLine("Memory Import WM_DI_CHANGE_STATION =======================")
                 ' for smart marker
@@ -861,6 +865,41 @@ Public Class frmPenEx
                 Return Cali_B5
             Case WorkAreaType.B6
                 Return Cali_B6
+            Case WorkAreaType.FT_6X4
+                Return Cali_FT_6X4
+            Case WorkAreaType.FT_6X5
+                Return Cali_FT_6X5
+            Case WorkAreaType.FT_8X4
+                Return Cali_FT_8X4
+            Case WorkAreaType.FT_8X5
+                Return Cali_FT_8X5
+            Case WorkAreaType.FLIP_7X10
+                Return Cali_Flip_7X10
+            Case WorkAreaType.TFT_3X5
+                Return Cali_TFT_3X5
+            Case WorkAreaType.TFT_3X6
+                Return Cali_TFT_3X6
+            Case WorkAreaType.TFT_4X6
+                Return Cali_TFT_4X6
+            Case WorkAreaType.BFT_3X5
+                Return Cali_BFT_3X5
+            Case WorkAreaType.BFT_3X6
+                Return Cali_BFT_3X6
+            Case WorkAreaType.BFT_4X6
+                Return Cali_BFT_4X6
+            Case WorkAreaType.MANUAL, WorkAreaType.AUTO
+                If EquilModelCode = 4 Or EquilModelCode = 5 Then
+
+                    If CURRENT_MARKER_DIRECT = StationPosition.LEFT Or CURRENT_MARKER_DIRECT = StationPosition.BOTH Or CURRENT_MARKER_DIRECT = StationPosition.RIGHT Then
+                        Return Cali_FT_8X5
+                    Else
+                        Return Cali_TFT_4X6
+                    End If
+                Else
+                    Return Cali_A4
+                End If
+
+                
         End Select
     End Function
 
@@ -932,7 +971,6 @@ Public Class frmPenEx
             m_frmMemory = Nothing
             m_frmMemory = New frmMemoryImport
             m_frmMemory.Show()
-
         Else
             MessageBox.Show("Either device is off or not in good connection. Check device and try again. Or pair it again.")
         End If

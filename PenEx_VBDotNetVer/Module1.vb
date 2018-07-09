@@ -15,10 +15,12 @@ Module Module1
     End Enum
 
     Public Enum StationPosition
+        NONE = 0
         TOP = 1
         LEFT
         RIGHT
         BOTTOM
+        BOTH
     End Enum
 
     Public Enum MakerState
@@ -103,17 +105,49 @@ Module Module1
         CHANGEMODETOT2
     End Enum
     Public Enum WorkAreaType
-        LETTER = 1
+        AUTO = 0
+        LETTER
         A4
         A5
         B5
         B6
+        FT_6X4 = 6
+        FT_6X5
+        FT_8X4
+        FT_8X5
+        MANUAL = 10
+        TFT_3X5 = 11
+        TFT_3X6
+        TFT_4X6
+        BFT_3X5 = 14
+        BFT_3X6
+        BFT_4X6
+
+        FLIP_7X10
+        MANUAL_FORM
     End Enum
     Public Cali_LETTER As New System.Drawing.Rectangle(1737, 541, (5445 - 1737), (4818 - 541))   '(1700, 500, 5470, 4800)
     Public Cali_A4 As New System.Drawing.Rectangle(1768, 563, (5392 - 1768), (5160 - 563))       '(1750, 450, 5450, 5120)
     Public Cali_A5 As New System.Drawing.Rectangle(2341, 542, (4865 - 2341), (3631 - 542))       '(2300, 540, 4880, 3625)
     Public Cali_B5 As New System.Drawing.Rectangle(2027, 561, (5183 - 2027), (4462 - 561))       '(2000, 500, 5200, 4430)
     Public Cali_B6 As New System.Drawing.Rectangle(2500, 544, (4704 - 2500), (3154 - 544))       '(2460, 530, 4660, 3170)
+
+    Public Cali_FT_6X4 As New System.Drawing.Rectangle(1728, 45372, (15524 - 1728), (54824 - 45372))
+    Public Cali_FT_6X5 As New System.Drawing.Rectangle(1830, 44156, (15506 - 1830), (56034 - 44156))
+    Public Cali_FT_8X4 As New System.Drawing.Rectangle(1868, 45377, (20153 - 1868), (54735 - 45377))
+    Public Cali_FT_8X5 As New System.Drawing.Rectangle(1450, 44100, (20620 - 1450), (56150 - 44100)) 'ebeam sm
+
+    Public Cali_Flip_7X10 As New System.Drawing.Rectangle(1505, 46453, 5054, 7839)
+
+    Public Cali_TFT_3X5 As New System.Drawing.Rectangle(12790, 1547, (19966 - 12790), (13248 - 1547))
+    Public Cali_TFT_3X6 As New System.Drawing.Rectangle(12790, 1532, (19966 - 12790), (15298 - 1532))
+    Public Cali_TFT_4X6 As New System.Drawing.Rectangle(11590, 1450, (21230 - 11590), (15827 - 1450)) 'ebeam sm
+
+    Public Cali_BFT_3X5 As New System.Drawing.Rectangle(46612, 53961, (53788 - 46612), (65662 - 53961))
+    Public Cali_BFT_3X6 As New System.Drawing.Rectangle(46612, 51800, (53788 - 46612), (65566 - 51800))
+    Public Cali_BFT_4X6 As New System.Drawing.Rectangle(45305, 50708, (54945 - 45305), (65086 - 50708)) 'ebeam sm
+
+    Public MINI_MANUAL_CAL As Integer = Cali_FT_8X5.Width / 8 '1 ft
 
     '' Structure for receiving pen data 
     Friend Structure _pen_rec

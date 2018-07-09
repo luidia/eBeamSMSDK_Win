@@ -40,21 +40,21 @@ Partial Class frmMemoryImport
         '
         'btnGetMemoryData
         '
-        Me.btnGetMemoryData.Location = New System.Drawing.Point(28, 236)
+        Me.btnGetMemoryData.Location = New System.Drawing.Point(138, 236)
         Me.btnGetMemoryData.Name = "btnGetMemoryData"
         Me.btnGetMemoryData.Size = New System.Drawing.Size(104, 41)
         Me.btnGetMemoryData.TabIndex = 2
         Me.btnGetMemoryData.Text = "Get Data"
-        Me.btnGetMemoryData.UseVisualStyleBackColor = true
+        Me.btnGetMemoryData.UseVisualStyleBackColor = True
         '
         'btnStopImport
         '
-        Me.btnStopImport.Location = New System.Drawing.Point(138, 236)
+        Me.btnStopImport.Location = New System.Drawing.Point(248, 236)
         Me.btnStopImport.Name = "btnStopImport"
         Me.btnStopImport.Size = New System.Drawing.Size(104, 41)
         Me.btnStopImport.TabIndex = 3
         Me.btnStopImport.Text = "Stop Import"
-        Me.btnStopImport.UseVisualStyleBackColor = true
+        Me.btnStopImport.UseVisualStyleBackColor = True
         '
         'btnDeleteAll
         '
@@ -67,11 +67,11 @@ Partial Class frmMemoryImport
         '
         'btnGetList
         '
-        Me.btnGetList.Location = New System.Drawing.Point(248, 236)
+        Me.btnGetList.Location = New System.Drawing.Point(28, 236)
         Me.btnGetList.Name = "btnGetList"
         Me.btnGetList.Size = New System.Drawing.Size(104, 41)
         Me.btnGetList.TabIndex = 0
-        Me.btnGetList.Text = "Resume"
+        Me.btnGetList.Text = "Get List"
         Me.btnGetList.UseVisualStyleBackColor = true
         '
         'frmMemoryImport

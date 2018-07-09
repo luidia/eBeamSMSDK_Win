@@ -78,6 +78,7 @@ Partial Class frmPenEx
         Me.lbBatteryStation = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.btnAudio = New System.Windows.Forms.Button()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.cboAudioLang = New System.Windows.Forms.ComboBox()
@@ -94,7 +95,6 @@ Partial Class frmPenEx
         Me.lbStationPosition = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.lbMakerState = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
@@ -759,6 +759,16 @@ Partial Class frmPenEx
         Me.GroupBox6.TabIndex = 58
         Me.GroupBox6.TabStop = False
         '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Arial Narrow", 12.0!)
+        Me.Label14.Location = New System.Drawing.Point(457, 13)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(75, 24)
+        Me.Label14.TabIndex = 59
+        Me.Label14.Text = "(50~255)"
+        '
         'btnAudio
         '
         Me.btnAudio.Location = New System.Drawing.Point(417, 46)
@@ -911,16 +921,6 @@ Partial Class frmPenEx
         Me.lbMakerState.Size = New System.Drawing.Size(80, 26)
         Me.lbMakerState.TabIndex = 42
         '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Arial Narrow", 12.0!)
-        Me.Label14.Location = New System.Drawing.Point(457, 13)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(75, 24)
-        Me.Label14.TabIndex = 59
-        Me.Label14.Text = "(50~255)"
-        '
         'frmPenEx
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
@@ -930,7 +930,7 @@ Partial Class frmPenEx
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "frmPenEx"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Equil SDK"
+        Me.Text = "eBeaM SM SDK"
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         Me.SplitContainer1.ResumeLayout(False)
