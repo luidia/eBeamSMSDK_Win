@@ -159,18 +159,18 @@ Module Module1
         Public TY As Single ' Y (after calibration)
         Public FUNC As Integer 'pen button clicked
         Public ModelCode As Integer 'Device Model Code 2: Equil Smart Pen 3:Equil Smart Pen 2 4:Equil Smart Marker   
-        Public Sensor_dis As Integer 'distance between sensors (need not to know) 
-        Public HWVer As Integer 'HWVer 
-        Public MCU1 As Integer 'MCU1 (need not to know) 
-        Public MCU2 As Integer 'MCU2 (need not to know)
+        '        Public Sensor_dis As Integer 'distance between sensors (need not to know) 
+        '        Public HWVer As Integer 'HWVer 
+        '        Public MCU1 As Integer 'MCU1 (need not to know) 
+        '        Public MCU2 As Integer 'MCU2 (need not to know)
         Public PenStatus As Integer 'Pen tip (1: Down 2:Move 3:Up 4:Hover)
-        Public IRGAP As Integer 'sensor property (need not to know) 
+        '        Public IRGAP As Integer 'sensor property (need not to know) 
         'SmartMaker Variable Add
         Public PenTiming As Integer 'Maker State Data
         Public bRight As Integer
         Public Station_Position As Integer
-        Public drawRectX As Integer
-        Public drawRectY As Integer
+        '       Public drawRectX As Integer
+        '        Public drawRectY As Integer
     End Structure
     Public Structure PENConditionData
         Public modelCode As Integer

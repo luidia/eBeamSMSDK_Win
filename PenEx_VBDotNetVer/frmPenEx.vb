@@ -297,6 +297,7 @@ Public Class frmPenEx
 #End Region
 #End Region
 
+
 #Region "Connect / disconnect pen"
     Public Sub EquilReceiveHandle()
         'If you set this, USB connection message will be sent to the window handle.
@@ -434,10 +435,10 @@ Public Class frmPenEx
                 ptEnd.Y = Single.Parse(regWord.GetValue("EquilMakerBottm", "54824"))
             ElseIf EquilModelCode = 5 Then 'eBeam Smart Marker
 
-                ptStart.X = Single.Parse(regWord.GetValue("EquilMakerLeft", "1450"))
-                ptStart.Y = Single.Parse(regWord.GetValue("EquilMakerTop", "44100"))
-                ptEnd.X = Single.Parse(regWord.GetValue("EquilMakerRight", "20620"))
-                ptEnd.Y = Single.Parse(regWord.GetValue("EquilMakerBottm", "56150"))
+                ptStart.X = Single.Parse(regWord.GetValue("eBeamMarkerLeft", Cali_FT_8X5.Left))
+                ptStart.Y = Single.Parse(regWord.GetValue("eBeamMakerTop", Cali_FT_8X5.Top))
+                ptEnd.X = Single.Parse(regWord.GetValue("eBeamMakerRight", Cali_FT_8X5.Right))
+                ptEnd.Y = Single.Parse(regWord.GetValue("eBeamMakerBottm", Cali_FT_8X5.Bottom))
 
             Else
                 ptStart.X = Single.Parse(regWord.GetValue("EquilLeft", "1737"))
@@ -476,10 +477,10 @@ Public Class frmPenEx
                 ptEnd.Y = 54824
             ElseIf EquilModelCode = 5 Then
                 'If key is not exist, each calibration value setting with 6 fit X 4 fit Board
-                ptStart.X = 1728
-                ptStart.Y = 44100
-                ptEnd.X = 20620
-                ptEnd.Y = 56150
+                ptStart.X = Cali_FT_8X5.Left
+                ptStart.Y = Cali_FT_8X5.Top
+                ptEnd.X = Cali_FT_8X5.Right
+                ptEnd.Y = Cali_FT_8X5.Bottom
             Else
                 ptStart.X = 1737
                 ptStart.Y = 541
@@ -520,6 +521,11 @@ Public Class frmPenEx
                 regWord.SetValue("EquilMakerTop", ptStart.Y.ToString)
                 regWord.SetValue("EquilMakerRight", ptEnd.X.ToString)
                 regWord.SetValue("EquilMakerBottm", ptEnd.Y.ToString)
+            ElseIf EquilModelCode = 5 Then
+                regWord.SetValue("eBeamMakerLeft", ptStart.X.ToString)
+                regWord.SetValue("eBeamMakerTop", ptStart.Y.ToString)
+                regWord.SetValue("eBeamMakerRight", ptEnd.X.ToString)
+                regWord.SetValue("eBeamMakerBottm", ptEnd.Y.ToString)
             Else
                 regWord.SetValue("EquilLeft", ptStart.X.ToString)
                 regWord.SetValue("EquilTop", ptStart.Y.ToString)
@@ -606,11 +612,11 @@ Public Class frmPenEx
 
                     Dim pt As New PointF
 
-                    lbSensordis.Text = m_pRec.Sensor_dis
+                    '                    lbSensordis.Text = m_pRec.Sensor_dis
                     lbModelCode.Text = m_pRec.ModelCode
-                    lbHWVer.Text = m_pRec.HWVer
-                    lbMCU1Ver.Text = m_pRec.MCU1
-                    lbMCU2Ver.Text = m_pRec.MCU2
+                    '                   lbHWVer.Text = m_pRec.HWVer
+                    '                   lbMCU1Ver.Text = m_pRec.MCU1
+                    '                   lbMCU2Ver.Text = m_pRec.MCU2
                     lbRawX.Text = m_pRec.X
                     lbRawY.Text = m_pRec.Y
                     lbConvX.Text = m_pRec.TX.ToString
@@ -618,7 +624,7 @@ Public Class frmPenEx
                     lbPressure.Text = press.ToString
                     lbTemperature.Text = m_pRec.T.ToString
                     lbStatus.Text = m_pRec.PenStatus.ToString
-                    lbIRGAP.Text = m_pRec.IRGAP.ToString
+                    '                   lbIRGAP.Text = m_pRec.IRGAP.ToString
                     lbStationFlag.Text = If(m_pRec.bRight = 1, "RIGHT", "LEFT")
                     If m_pRec.ModelCode = 4 Or m_pRec.ModelCode = 5 Then
                         Select Case m_pRec.PenTiming
@@ -663,6 +669,8 @@ Public Class frmPenEx
                             If EquilModelCode = 5 Then   'eBeam Smart Marker 
                                 pt.Y *= picMain.Height / 65535.0
                                 pt.X *= picMain.Width / 65535.0
+
+                                Console.WriteLine("Draw X= {0} Y={1}", pt.X, pt.Y)
                             Else
 
                             End If
